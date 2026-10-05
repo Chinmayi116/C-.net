@@ -1,0 +1,16 @@
+SqlConnection con = new SqlConnection(
+    "Data Source=.;Initial Catalog=StudentDB;Integrated Security=True");
+
+con.Open();
+
+SqlCommand cmd = new SqlCommand(
+    "SELECT * FROM Students", con);
+
+SqlDataReader dr = cmd.ExecuteReader();
+
+while (dr.Read())
+{
+    Console.WriteLine(dr["Name"]);
+}
+
+con.Close();
