@@ -1,0 +1,21 @@
+using System.Data;
+using System.Data.SqlClient;
+private void button1_Click(object sender, EventArgs e)
+{
+    // Create Connection object
+    SqlConnection con = new SqlConnection(
+        @"Data Source=.;Initial Catalog=CollegeDB;Integrated Security=True");
+
+    // Create DataAdapter object
+    SqlDataAdapter da = new SqlDataAdapter(
+        "SELECT TOP 10 * FROM Student", con);
+
+    // Create DataSet object
+    DataSet ds = new DataSet();
+
+    // Fill DataSet
+    da.Fill(ds, "Student");
+
+    // Display records in DataGridView
+    dataGridView1.DataSource = ds.Tables["Student"];
+}
